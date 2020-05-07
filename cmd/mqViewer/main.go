@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -34,7 +35,7 @@ func main() {
 
 	c := make(chan os.Signal, 1)
 	done := make(chan bool, 1)
-	signal.Notify(c, os.Interrupt)
+	signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
 		<-c
