@@ -1,15 +1,11 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gorilla/mux v1.7.4 h1:VuZ8uybHlWmqV03+zRzdwKL4tUnIp1MAQtp1mIFE1bc=
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
-github.com/ibm-messaging/mq-golang v1.0.1-0.20190820103725-19b946c185a8/go.mod h1:qjsZDb7m1oKnbPeDma2JVJTKgyCA91I4bcJ1qHY+gcA=
 github.com/ibm-messaging/mq-golang v1.0.1-0.20200501115936-e06fc397f714 h1:u1HqPaJd7GBbrkpFQ1zovPKib+nrxoxTxEm7SD89lLc=
 github.com/ibm-messaging/mq-golang v1.0.1-0.20200501115936-e06fc397f714/go.mod h1:Mj+2S75KqsDx/S/ZuyvkKcPaLKHaWV6rTsJwYivEt4Q=
-github.com/ibm-messaging/mq-golang-jms20 v1.1.0 h1:nfp+CRyQuA10C8TtfFQdUL8xlXbXk+wiprQnpn8JKXQ=
-github.com/ibm-messaging/mq-golang-jms20 v1.1.0/go.mod h1:LpgCez5+vtMQGCeeIEaFGmTSsJbHPgMbbxbgFImeEg4=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/soypita/mq-golang-jms20 v1.1.1-0.20200507162130-628b533c2862 h1:Q0YylL96rOCErvP/lsufSIF+49pg5UaSNTgpvBg2AS4=
-github.com/soypita/mq-golang-jms20 v1.1.1-0.20200507162130-628b533c2862/go.mod h1:6+WvpKqylaca8zW+MHxnUvHzgwuSrZ20POf70IpG3m0=
+github.com/soypita/mq-golang-jms20 v1.1.1-0.20200510122642-8c6891cb8a48 h1:GNXiIhMjqJCIMBplNv1McnjdWJzgSyCwvUQdmjYOv+0=
+github.com/soypita/mq-golang-jms20 v1.1.1-0.20200510122642-8c6891cb8a48/go.mod h1:l8BKEcug6l+8npCb/J4iyn2HwMCAu5dl0RCBx1Tg3LI=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=

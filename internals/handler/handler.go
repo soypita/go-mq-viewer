@@ -3,40 +3,46 @@ package handler
 import (
 	"encoding/json"
 	"mqViewer/internals/model"
+	"mqViewer/internals/services"
 	"net/http"
-	"strconv"
-
-	"github.com/soypita/mq-golang-jms20/mqjms"
 )
 
-type mQViewerHandler struct {
-	connFactory *mqjms.ConnectionFactoryImpl
+// MQViewerHandler handler for http requests
+type MQViewerHandler struct {
+	mqService services.MQService
 }
 
-func NewMQViewerHandler() *mQViewerHandler {
-	return &mQViewerHandler{}
+// NewMQViewerHandler create instanse of MQ viewer handler
+func NewMQViewerHandler(serv services.MQService) *MQViewerHandler {
+	return &MQViewerHandler{
+		mqService: serv,
+	}
 }
 
-func (h *mQViewerHandler) CreateNewConnectionWithParams(w http.ResponseWriter, r *http.Request) {
+// BrowseAllMessages handler return all messages in specified queue
+func (h *MQViewerHandler) BrowseAllMessages(w http.ResponseWriter, r *http.Request) {
+	resMsgList, err := h.mqService.GetAllMessages()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(&resMsgList)
+}
+
+// CreateNewConnectionWithParams create new connection to MQ queue with provided params
+func (h *MQViewerHandler) CreateNewConnectionWithParams(w http.ResponseWriter, r *http.Request) {
 	var connectParams model.CreateConnectionRequest
 	err := json.NewDecoder(r.Body).Decode(&connectParams)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-
-	parsePort, err := strconv.Atoi(connectParams.Port)
+	err = h.mqService.CreateConnection(&connectParams, true)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	h.connFactory = &mqjms.ConnectionFactoryImpl{
-		QMName:      connectParams.ManagerName,
-		Hostname:    connectParams.Host,
-		PortNumber:  parsePort,
-		ChannelName: connectParams.ChannelName,
-		UserName:    connectParams.Username,
-		Password:    connectParams.Password,
-		BrowseMode:  true,
-	}
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(connectParams)
 }
